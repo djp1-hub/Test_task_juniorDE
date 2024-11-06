@@ -127,5 +127,6 @@ for sheet_name in workbook.sheetnames:
     sheet_protection.sheet = True
     worksheet.protection = sheet_protection
 
+
 # Сохраняем изменения
 workbook.save(excel_path)
