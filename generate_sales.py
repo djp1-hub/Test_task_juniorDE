@@ -9,8 +9,8 @@ from openpyxl.worksheet.table import Table, TableStyleInfo
 from openpyxl.worksheet.protection import SheetProtection
 
 
-password = ''.join(random.choices(string.ascii_letters, k=100))
-
+password = ''.join(random.choices(string.ascii_letters, k=8))
+print(password)
 
 # Определяем типы данных для столбцов
 data_types = {
