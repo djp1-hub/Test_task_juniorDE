@@ -6,11 +6,6 @@ import string
 from openpyxl import load_workbook, Workbook
 from openpyxl.styles import NamedStyle, Font, Border, Side, PatternFill
 from openpyxl.worksheet.table import Table, TableStyleInfo
-from openpyxl.worksheet.protection import SheetProtection
-
-
-password = ''.join(random.choices(string.ascii_letters, k=100))
-
 
 # Определяем типы данных для столбцов
 data_types = {
@@ -85,10 +80,10 @@ for i in range(10):
 
 # Функция для генерации случайного цвета в формате RGB
 def random_color():
-    return f"{random.randint(225, 255):02X}{random.randint(225, 255):02X}{random.randint(225, 255):02X}"
+    return f"{random.randint(200, 255):02X}{random.randint(200, 255):02X}{random.randint(200, 255):02X}"
 
 # Генерация списка из 100 уникальных цветов
-unique_colors = [random_color() for _ in range(100)]
+unique_colors = [random_color() for _ in range(10)]
 
 # Применение таблиц, стилей и ограниченного набора уникальных цветов к каждой вкладке
 for sheet_name in workbook.sheetnames:
@@ -122,12 +117,6 @@ for sheet_name in workbook.sheetnames:
         cell = worksheet.cell(row=row, column=1)  # Столбец "A", где "Дата продажи"
         if isinstance(cell.value, datetime):  # Проверяем, что значение является датой
             cell.number_format = 'DD.MM.YYYY'
-
-    # Устанавливаем защиту листа
-    sheet_protection = SheetProtection()
-    sheet_protection.password = password
-    sheet_protection.sheet = True
-    worksheet.protection = sheet_protection
 
 # Сохраняем изменения
 workbook.save(excel_path)
